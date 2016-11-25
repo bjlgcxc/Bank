@@ -1,9 +1,12 @@
 package com.ssm.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ssm.pojo.Trade;
 import com.ssm.service.TradeService;
 
 @RequestMapping("/trade")
@@ -14,8 +17,9 @@ public class TradeCController {
 	TradeService tradeService;
 	
 	@RequestMapping("queryTrade")
-	public String queryTrade(HttpServletRequest request){
-		return null;
+	public Trade queryTrade(HttpServletRequest request){
+		long cardId = Long.parseLong(request.getParameter("cardId"));
+		return tradeService.getTradeByCardId(cardId);
 	}
 
 }

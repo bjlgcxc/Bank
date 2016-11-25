@@ -1,15 +1,23 @@
 package com.ssm.pojo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Trade {
-
+	
 	private int id;
-	private int accountId;
+	private long cardId;
 	private int type;
 	private float amount;
 	private Date time;
 	private float charge;
+	
+	public Trade(long cardId,int type,float amount,Date time,float charge){
+		this.cardId = cardId;
+		this.type = type;
+		this.amount = amount;
+		this.time = time;
+		this.charge = charge;
+	}
 	
 	public int getId() {
 		return id;
@@ -17,11 +25,11 @@ public class Trade {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getAccountId() {
-		return accountId;
+	public long getCardId() {
+		return cardId;
 	}
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
+	public void setCardId(long cardId) {
+		this.cardId = cardId;
 	}
 	public int getType() {
 		return type;

@@ -27,4 +27,8 @@ public class TradeService {
 		return tradeDao.selectById(id);
 	}
 	
+	public Trade getTradeByCardId(long cardId){
+		return tradeDao.selectByCardId(cardId);
+	}
+	
 }

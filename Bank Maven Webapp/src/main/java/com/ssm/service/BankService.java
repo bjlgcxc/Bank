@@ -1,7 +1,10 @@
 package com.ssm.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ssm.dao.BankDao;
 import com.ssm.pojo.Bank;
 
@@ -23,6 +26,10 @@ public class BankService {
 		bankDao.update(bank);
 	}
 
+	public List<Bank> selectBank(){
+		return bankDao.select();
+	}
+	
 	public Bank selectBankById(int id){
 		return bankDao.selectById(id);
 	}

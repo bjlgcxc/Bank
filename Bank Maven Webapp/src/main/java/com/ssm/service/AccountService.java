@@ -19,12 +19,24 @@ public class AccountService {
 		accountDao.delete(id);
 	}
 	
+	public void deleteAccount(long cardId,int userId){
+		accountDao.delete(userId, cardId);
+	}
+	
 	public void updateAccount(Account account){
 		accountDao.update(account);
+	}
+	
+	public void updateBalance(long cardId,float change){
+		accountDao.update(cardId, change);
 	}
 
 	public Account getAccountById(int id){
 		return accountDao.selectById(id);
+	}
+	
+	public float getBalance(long cardId){
+		return accountDao.selectBalance();
 	}
 	
 	public long getMaxCardId(){
