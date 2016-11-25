@@ -15,16 +15,8 @@ public class AccountService {
 		accountDao.insert(account);
 	}
 	
-	public void deleteAccount(int id){
-		accountDao.delete(id);
-	}
-	
 	public void deleteAccount(long cardId,int userId){
 		accountDao.delete(userId, cardId);
-	}
-	
-	public void updateAccount(Account account){
-		accountDao.update(account);
 	}
 	
 	public void updateBalance(long cardId,float change){

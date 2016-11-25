@@ -11,17 +11,10 @@ public interface AccountDao {
 	public void insert(Account account);
 	
 	//delete
-	@Delete("delete from account where id=#{id}")
-	public void delete(int id);
-	
 	@Delete("delete from account where userId=#{userId} and cardId=#{cardId}")
 	public void delete(int userId,long cardId);
 	
 	//update
-	@Update("update account set cardNo=#{cardNo},userId=#{userId},bankId=#{bankId},password=#{password},"
-			+ "balance=#{balance} where id=#{id}")
-	public void update(Account account);
-	
 	@Update("update account set balance=balance+#{change} where cardId=#{cardId}")
 	public void update(long cardId,float change);
 	
