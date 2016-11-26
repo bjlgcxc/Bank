@@ -15,7 +15,7 @@ import com.ssm.service.TradeService;
  * AccountController
  * 
  * @author caixiaocong
- *asdas
+ *
  */
 @RequestMapping("/account")
 @Controller
