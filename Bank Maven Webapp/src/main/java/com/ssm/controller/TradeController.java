@@ -11,12 +11,12 @@ import com.ssm.service.TradeService;
 
 @RequestMapping("/trade")
 @Controller
-public class TradeCController {
+public class TradeController {
 
 	@Autowired
 	TradeService tradeService;
 	
-	@RequestMapping("queryTrade")
+	@RequestMapping("/queryTrade")
 	public Trade queryTrade(HttpServletRequest request){
 		long cardId = Long.parseLong(request.getParameter("cardId"));
 		return tradeService.getTradeByCardId(cardId);

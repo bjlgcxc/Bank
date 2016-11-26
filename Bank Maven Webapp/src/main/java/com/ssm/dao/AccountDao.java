@@ -19,8 +19,8 @@ public interface AccountDao {
 	public void update(long cardId,float change);
 	
 	//select
-	@Select("select * from account where id=#{id}")
-	public Account selectById(int id);
+	@Select("select * from account where cardId=#{cardId} and password=#{password}")
+	public Account selectByCard(int cardId,String password);
 	
 	@Select("select balance from account where cardId=#{cardId}")
 	public float selectBalance();

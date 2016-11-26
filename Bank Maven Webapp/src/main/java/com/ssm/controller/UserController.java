@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ssm.pojo.User;
 import com.ssm.service.UserService;
 
@@ -29,10 +30,21 @@ public class UserController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/addUser")
+	public JSONObject addUser(HttpServletRequest request,User user){
+		userService.addUser(user);
+		
+		JSONObject json = new JSONObject();
+		json.put("ok", true);
+		return json;
+	}
+	
+	@ResponseBody
 	@RequestMapping("/queryUser")
 	public User queryUser(HttpServletRequest request) throws UnsupportedEncodingException{
+		String name = request.getParameter("name");
 		String IDNo = request.getParameter("IDNo");
-		User user = userService.getUserByIDNo(IDNo);
+		User user = userService.getUserByID(name,IDNo);
 		return user;
 	}
 	

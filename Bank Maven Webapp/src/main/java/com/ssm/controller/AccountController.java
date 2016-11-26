@@ -1,15 +1,21 @@
 package com.ssm.controller;
 
 import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.alibaba.fastjson.JSONObject;
 import com.ssm.pojo.Account;
 import com.ssm.pojo.Trade;
+import com.ssm.pojo.User;
 import com.ssm.service.AccountService;
+import com.ssm.service.BankService;
 import com.ssm.service.TradeService;
+import com.ssm.service.UserService;
 
 /**
  * AccountController
@@ -24,14 +30,43 @@ public class AccountController {
 	@Autowired
 	AccountService accountService;
 	@Autowired
+	UserService userService;
+	@Autowired
+	BankService bankService;
+	@Autowired
 	TradeService tradeService;	
 	
 	/*
 	 * 开户
 	 */
 	@RequestMapping("/openAccount")
-	public JSONObject openAccount(HttpServletRequest request,Account account){
-		account.setCardNo(accountService.getMaxCardId() + 1);
+	public JSONObject openAccount(HttpServletRequest request){	
+		//userId
+		String name = request.getParameter("name");
+		String IDNo = request.getParameter("IDNo");
+		User user = userService.getUserByID(name, IDNo);
+		int userId;
+		if(user!=null){
+			userId = user.getId();
+		}
+		else{
+			user = new User();
+			user.setName(name);
+			user.setIDNo(IDNo);
+			userService.addUser(user);
+			
+			userId = userService.getUserByID(name, IDNo).getId();
+		}	
+		//bankId
+		int bankId = bankService.selectBankByName(name).getId();
+		//password
+		String password = request.getParameter("password");
+		
+		Account account = new Account();
+		account.setUserId(userId);
+		account.setBankId(bankId);
+		account.setPassword(password);
+		account.setCardId(accountService.getMaxCardId() + 1);
 		account.setBalance(0);
 		accountService.addAccount(account);
 		
@@ -46,7 +81,11 @@ public class AccountController {
 	@RequestMapping("/closeAccount")
 	public JSONObject closeAccount(HttpServletRequest request){
 		long cardId = Long.parseLong(request.getParameter("cardId"));
+		String password = request.getParameter("password");
+		
+		
 		int userId = Integer.parseInt(request.getParameter("userId"));
+		
 		accountService.deleteAccount(cardId,userId);
 		
 		JSONObject json = new JSONObject();
