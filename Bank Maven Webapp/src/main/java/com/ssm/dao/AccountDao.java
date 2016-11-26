@@ -20,7 +20,7 @@ public interface AccountDao {
 	
 	//select
 	@Select("select * from account where cardId=#{cardId} and password=#{password}")
-	public Account selectByCard(int cardId,String password);
+	public Account selectByCard(long cardId,String password);
 	
 	@Select("select balance from account where cardId=#{cardId}")
 	public float selectBalance();

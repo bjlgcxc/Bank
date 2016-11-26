@@ -1,35 +1,35 @@
 1.开户
 接口：http://10.108.14.188:8080/account/openAccount
 参数：name,IDNo,bankName,password
-返回：{"msg":"ok"} or {"msg":"xxx error"}
+返回：{"ok":true} or {"ok":false,"msg":"xxx error"}
 
 2.销户
 接口：http://10.108.14.188:8080/account/closeAccount
 参数：cardId,password,name,IDNo
-返回：{"msg":"ok"} or {"msg":"xxx error"}
+返回：{"ok":true} or {"ok":false,"msg":"xxx error"}
 
 --------------------------------------------------------
 
 3.存/取款
 接口：http://10.108.14.188:8080/account/changeBalance
 参数：cardId,password,amount(正的为存款,负为取款)
-返回：{"msg":"ok"} or {"msg":"xxx error"}
+返回：{"ok":true} or {"ok":false,"msg":"xxx error"}
 
 4.转账
 接口：http://10.108.14.188:8080/account/transfer
 参数：from,to,password,amount
-返回：{"msg":"ok"} or {"msg":"xxx error"}
+返回：{"ok":true} or {"ok":false,"msg":"xxx error"}
 
 --------------------------------------------------------
 
 5.查询余额
 接口：http://10.108.14.188:8080/account/queryBalance
 参数：cardId,password
-返回：{"msg":"ok","balance":xxx} or {"msg":"xxx error"}
+返回：{"ok":true,"balance":xxx} or {"ok":false,"msg":"xxx error"}
 
 6.查询交易记录
 接口：http://10.108.14.188:8080/trade/queryTrade
 参数：cardId,password
-返回：{"msg":"ok","trade":xxx} or {"msg":"xxx error"}
+返回：{"ok":true,"trade":xxx} or {"ok":false,"msg":"xxx error"}
 
 

@@ -1,7 +1,10 @@
 package com.ssm.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ssm.dao.TradeDao;
 import com.ssm.pojo.Trade;
 
@@ -27,7 +30,7 @@ public class TradeService {
 		return tradeDao.selectById(id);
 	}
 	
-	public Trade getTradeByCardId(long cardId){
+	public List<Trade> getTradeByCardId(long cardId){
 		return tradeDao.selectByCardId(cardId);
 	}
 	

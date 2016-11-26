@@ -1,6 +1,9 @@
 package com.ssm.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.*;
+
 import com.ssm.pojo.Trade;
 
 public interface TradeDao {
@@ -24,6 +27,6 @@ public interface TradeDao {
     public Trade selectById(int id);
 	
 	@Select("select * from trade where cardId=#{cardId}")
-	public Trade selectByCardId(long cardId);
+	public List<Trade> selectByCardId(long cardId);
 	
 }

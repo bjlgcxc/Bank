@@ -23,7 +23,7 @@ public class AccountService {
 		accountDao.update(cardId, change);
 	}
 
-	public Account accountCheck(int cardId,String password){
+	public Account accountCheck(long cardId,String password){
 		return accountDao.selectByCard(cardId, password);
 	}
 	
