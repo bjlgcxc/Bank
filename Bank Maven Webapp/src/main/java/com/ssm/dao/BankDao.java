@@ -1,9 +1,6 @@
 package com.ssm.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.*;
-
 import com.ssm.pojo.Bank;
 
 public interface BankDao {
@@ -21,8 +18,8 @@ public interface BankDao {
 	public void update(Bank bank); 
 	
 	//select
-	@Select("select * from bank")
-	public List<Bank> select();
+	@Select("select * from bank where name=#{name}")
+	public Bank selectByName(String name);
 	
 	@Select("select * from bank where id=#{id}")
     public Bank selectById(int id);

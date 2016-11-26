@@ -27,8 +27,8 @@ public class UserService {
 		return userDao.selectById(id);
 	}
 	
-	public User getUserByIDNo(String IDNo){
-		return userDao.selectByIDNo(IDNo);
+	public User getUserByID(String name,String IDNo){
+		return userDao.selectByID(name,IDNo);
 	}
 	
 }

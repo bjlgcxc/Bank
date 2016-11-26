@@ -23,8 +23,8 @@ public class AccountService {
 		accountDao.update(cardId, change);
 	}
 
-	public Account getAccountById(int id){
-		return accountDao.selectById(id);
+	public Account accountCheck(int cardId,String password){
+		return accountDao.selectByCard(cardId, password);
 	}
 	
 	public float getBalance(long cardId){

@@ -3,7 +3,7 @@ package com.ssm.pojo;
 public class Account {
 	
 	private int id;
-	private long cardNo;
+	private long cardId;
 	private int userId;
 	private int bankId;
 	private String password;
@@ -15,11 +15,11 @@ public class Account {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public long getCardNo() {
-		return cardNo;
+	public long getCardId() {
+		return cardId;
 	}
-	public void setCardNo(long cardNo) {
-		this.cardNo = cardNo;
+	public void setCardId(long cardId) {
+		this.cardId = cardId;
 	}
 	public int getUserId() {
 		return userId;

@@ -17,7 +17,7 @@ public interface UserDao {
 	@Select("select * from user where id=#{id}")
     public User selectById(int id);
 	
-	@Select("select * from user where IDNo=#{IDNo}")
-	public User selectByIDNo(String IDNo);
+	@Select("select * from user where name=#{name} and IDNo=#{IDNo}")
+	public User selectByID(String name,String IDNo);
 	
 }
